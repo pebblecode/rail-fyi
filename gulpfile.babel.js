@@ -11,28 +11,10 @@ import babelify from 'babelify';
 import concat from 'gulp-concat';
 import { join } from 'path';
 
-import through from 'through2';
-
-
-//gulp.task('default', () => {
-//  return gulp.src('src/client/*.js')
-//    .pipe(sourceMaps.init())
-//    .pipe(babel({
-//      presets: ['babel-preset-react', 'babel-preset-es2015']
-//    }))
-//    .pipe(concat('all.js'))
-//    .pipe(sourceMaps.write('.'))
-//    .pipe(gulp.dest('./public/js'));
-//});
-
-
-
 let compile = (watch) => {
 
   let entryFile = join(__dirname, 'src', 'client', 'index.js');
   var destFolder = join(__dirname, 'public', 'js');
-
-  console.log(entryFile, destFolder);
 
   let bundler = watchify(
     browserify(entryFile, Object.apply({}, { debug: true }, watchify.args))
@@ -46,13 +28,6 @@ let compile = (watch) => {
       console.error(error);
       this.emit('end');
     })
-    //.pipe(through((data, enc, next) => {
-    //  console.log(data);
-    //  this.push(data);
-    //  next()
-    //}), (done) => {
-    //  done()
-    //})
     .pipe(source('build.js'))
     .pipe(buffer())
     .pipe(sourceMaps.init())
@@ -68,8 +43,6 @@ let compile = (watch) => {
   }
 
   rebundle();
-
-  //return rebundle;
 };
 
 gulp.task('build', () => { return compile(false); });

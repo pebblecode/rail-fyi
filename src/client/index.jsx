@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 
+import { Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 
 let LocationInformation = React.createClass({
   getInitialState () {
@@ -23,29 +24,72 @@ let LocationInformation = React.createClass({
   }
 });
 
-ReactDOM.render(<LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>, document.getElementById('social-login-attach'));
+let StationTab = React.createClass({
+  render () {
+    return (
+      <div>
+        <h2>Station</h2>
+        <LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>
+      </div>
+    )
+  }
+});
 
 
+let TrainTab = React.createClass({
+  getInitialState: function () {
+    return {
+      staff: false,
+      facilities: false
+    };
+  },
+  onStaffClick(evt) {
+    this.setState({
+      staff: true,
+      facilities: false
+    });
 
-//let SocialLoginButton = React.createClass({
-//  render () {
-//    return (
-//      <div className="social-login">
-//        <button>{this.props.children}</button>
-//      </div>
-//    )
-//  }
-//});
-//
-//let SocialLogin = React.createClass({
-//  render () {
-//    return (
-//      <div className="social-login-box">
-//        <SocialLoginButton>Twitter</SocialLoginButton>
-//        <SocialLoginButton>Facebook</SocialLoginButton>
-//      </div>
-//    )
-//  }
-//});
-//
-//ReactDOM.render(<SocialLogin></SocialLogin>, document.getElementById('social-login-attach'));
+  },
+  onFacilitiesClick(evt) {
+    this.setState({
+      staff: false,
+      facilities: true
+    });
+  },
+  render () {
+
+
+    return (
+      <div>
+        <h2>Train</h2>
+        <LocationInformation location="Carriage 53245"></LocationInformation>
+
+        <img alt="Staff" onClick={this.onStaffClick}/>
+        <img alt="Facilities" onClick={this.onFacilitiesClick}/>
+
+        { this.state.staff ? <div>Staff</div> : null }
+        { this.state.facilities ? <div>Facilities</div> : null }
+
+      </div>
+    );
+  }
+});
+
+ReactDOM.render(
+  <div>
+    <Tabs>
+      <TabList>
+        <Tab>Station</Tab>
+        <Tab>Train</Tab>
+      </TabList>
+      <TabPanel>
+        <StationTab/>
+      </TabPanel>
+      <TabPanel>
+        <TrainTab/>
+      </TabPanel>
+    </Tabs>
+  </div>,
+  document.getElementById('app-attach')
+);
+

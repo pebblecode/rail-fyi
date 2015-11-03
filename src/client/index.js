@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
 
+import { Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 
 let LocationInformation = React.createClass({
   getInitialState () {
@@ -23,8 +24,27 @@ let LocationInformation = React.createClass({
   }
 });
 
-ReactDOM.render(<LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>, document.getElementById('social-login-attach'));
+//ReactDOM.render(<LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>, document.getElementById('social-login-attach'));
 
+
+ReactDOM.render(
+    <Tabs>
+      <TabList>
+        <Tab>Station</Tab>
+        <Tab>Train</Tab>
+      </TabList>
+      <TabPanel>
+        <h2>Hello from Foo</h2>
+        <LocationInformation location="Carriage 53245"></LocationInformation>
+      </TabPanel>
+      <TabPanel>
+        <h2>Hello from Bar</h2>
+        <LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>
+      </TabPanel>
+
+    </Tabs>,
+    document.getElementById('social-login-attach')
+);
 
 
 //let SocialLoginButton = React.createClass({

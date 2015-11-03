@@ -36,6 +36,16 @@ let plugins = {
     isCached: process.env.NODE_ENV === 'production',
     helpersPath: join(layoutPath, 'helpers')
   },
+  './login': [{
+    options: {
+      twitter: {
+        password: 'c2cfyi',
+        clientId: 'JCmN7QwgJGblfpTp0Lry3HvTE',
+        clientSecret: 'E6LnrFDCkTcO5VR0rJKgHKG8TpBYa6rnYiEy8IqgW3LUHsAzj7',
+        isSecure: false
+      }
+    }
+  }],
   './homepage': {},
   './static': [{
     options: {
@@ -61,6 +71,13 @@ let createServer = () => {
       if (error) {
         throw error;
       }
+
+      server.on('request-internal', (request, event, tags) => {
+
+        if (tags.error && tags.state) {
+          console.error(event);
+        }
+      });
 
       server.log(['debug'], `Server started on 9000`);
     });

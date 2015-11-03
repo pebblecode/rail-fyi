@@ -23,21 +23,25 @@ let LocationInformation = React.createClass({
   }
 });
 
-let Panels = React.createClass({
+let PanelSelector = React.createClass({
   getInitialState: function () {
     return {
       selectedIndex: 0
     };
   },
-  handleClick: function(i) {
-    this.setState({ selectedIndex: i });
+  handleClick: function (i) {
+    this.setState({
+      selectedIndex: i
+    });
   },
   render () {
     return (
       <div>
-        {this.props.titles.map(function(title, i) {
+        {this.props.titles.map(function (title, i) {
           return (
-            <img onClick={this.handleClick.bind(this, i)} key={i} alt={title.alt} src={title.src}></img>
+            <div onClick={this.handleClick.bind(this, i)} key={i}>
+              {title}
+            </div>
           );
         }, this)}
         {this.props.children[this.state.selectedIndex]}
@@ -53,10 +57,10 @@ let StationTab = React.createClass({
       <div>
         <h2>Station</h2>
         <LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>
-        <Panels titles={[{alt:'1', src:'1.png'}, {alt:'2', src:'2.png'}]}>
+        <PanelSelector titles={[<img alt='1' src='1.png'></img>, <img alt='3' src='2.png'></img>]}>
           <div>1</div>
           <div>2</div>
-        </Panels>
+        </PanelSelector>
       </div>
     )
   }

@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import moment from 'moment';
-
-import { Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
 let LocationInformation = React.createClass({
   getInitialState () {
@@ -24,12 +23,40 @@ let LocationInformation = React.createClass({
   }
 });
 
+let Panels = React.createClass({
+  getInitialState: function () {
+    return {
+      selectedIndex: 0
+    };
+  },
+  handleClick: function(i) {
+    this.setState({ selectedIndex: i });
+  },
+  render () {
+    return (
+      <div>
+        {this.props.titles.map(function(title, i) {
+          return (
+            <img onClick={this.handleClick.bind(this, i)} key={i} alt={title.alt} src={title.src}></img>
+          );
+        }, this)}
+        {this.props.children[this.state.selectedIndex]}
+      </div>
+
+    );
+  }
+});
+
 let StationTab = React.createClass({
   render () {
     return (
       <div>
         <h2>Station</h2>
         <LocationInformation location="Kings Cross Platform 9 & 3/4"></LocationInformation>
+        <Panels titles={[{alt:'1', src:'1.png'}, {alt:'2', src:'2.png'}]}>
+          <div>1</div>
+          <div>2</div>
+        </Panels>
       </div>
     )
   }
@@ -48,7 +75,6 @@ let TrainTab = React.createClass({
       staff: true,
       facilities: false
     });
-
   },
   onFacilitiesClick(evt) {
     this.setState({
@@ -57,19 +83,20 @@ let TrainTab = React.createClass({
     });
   },
   render () {
-
-
     return (
       <div>
         <h2>Train</h2>
         <LocationInformation location="Carriage 53245"></LocationInformation>
 
-        <img alt="Staff" onClick={this.onStaffClick}/>
-        <img alt="Facilities" onClick={this.onFacilitiesClick}/>
+        <p>
+          <img alt="Staff" onClick={this.onStaffClick}/>
+        </p>
 
-        { this.state.staff ? <div>Staff</div> : null }
-        { this.state.facilities ? <div>Facilities</div> : null }
-
+        <p>
+          <img alt="Facilities" onClick={this.onFacilitiesClick}/>
+        </p>
+        { this.state.staff && <div>Staff</div> }
+        { this.state.facilities && <div>Facilities</div> }
       </div>
     );
   }

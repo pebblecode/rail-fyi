@@ -9,6 +9,7 @@ const Layout = React.createClass({
       <html>
         <head>
           <title>{this.props.title || "C2C App"}</title>
+          <link rel="stylesheet" href="/css/styles.css"/>
         </head>
         <body>
           <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.remount }}></div>

@@ -68,6 +68,15 @@ var registerPlugin = (server, options, next) => {
     }
   });
 
+
+  server.route({
+    method: 'POST',
+    path: '/submit-post',
+    handler: (req, reply) => {
+      reply(Object.assign({}, {success: true}, JSON.parse(req.payload)));
+    }
+  });
+
   return next();
 };
 

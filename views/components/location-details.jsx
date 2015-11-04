@@ -19,9 +19,13 @@ const LocationDetails = React.createClass({
 
     return (
       <div className="location-details" id={id}>
-        <h2>{this.props.name}</h2>
-        <h4>Date: {currentDate}</h4>
-        <h4>Time: {currentTime}</h4>
+        <div>
+          <h2>{this.props.name}</h2>
+          <h4>Date: {currentDate}</h4>
+          <h4>Time: {currentTime}</h4>
+        </div>
+
+        {this.props.children}
       </div>
     )
   }

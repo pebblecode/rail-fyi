@@ -1,16 +1,26 @@
 'use strict';
 
 import React from 'react';
-import Layout from './layout/layout.jsx';
-import LocationDetails from './location-details.jsx';
+import LocationDetails from './components/location-details.jsx';
+
+import StationForm from './components/station-form.jsx';
+import TrainForm from './components/train-form.jsx';
 
 const ReportPage = React.createClass({
 
   render () {
+
+    let FeedbackForm;
+    if (this.props.type === 'station') {
+      FeedbackForm = <StationForm code={this.props.code} name={this.props.name} />
+    } else {
+      FeedbackForm = <TrainForm code={this.props.code} name={this.props.name} />
+    }
+
     return (
-      <Layout title="C2C App">
-        <LocationDetails type={this.props.type} code={this.props.code} name={this.props.name} />
-      </Layout>
+      <LocationDetails type={this.props.type} code={this.props.code} name={this.props.name}>
+        {FeedbackForm}
+      </LocationDetails>
     );
   }
 });

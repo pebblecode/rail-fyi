@@ -43,7 +43,28 @@ var registerPlugin = (server, options, next) => {
     path: '/{shortCode}',
     handler: (req, reply) => {
       server.methods.parseUrl(req.params.shortCode)
-        .then(result => reply.view('reportpage', result), error => reply(error))
+        .then(result => {
+
+          server.render('reportpage', result, {runtimeOptions: { renderMethod: 'renderToString'}}, (error, output) => {
+            if (error) {
+              return reply(error);
+            }
+            const htmlContext = {
+              remount: output,
+              state: `window.C2CFYI=${JSON.stringify(result)};`
+            };
+
+            server.render('layout/layout', htmlContext, (error, html) => {
+              if (error) {
+                return reply(error);
+              }
+              reply(html);
+            })
+
+          });
+
+          //reply.view('reportpage', result);
+        }, error => reply(error))
     }
   });
 

@@ -8,11 +8,14 @@ const Layout = React.createClass({
     return (
       <html>
         <head>
-          <title>{this.props.title}</title>
+          <title>{this.props.title || "C2C App"}</title>
         </head>
         <body>
-          {this.props.children}
+          <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.remount }}></div>
+          <script id="app-state" dangerouslySetInnerHTML={{ __html: this.props.state }}></script>
         </body>
+
+        <script src="/js/build.js"></script>
       </html>
     );
   }

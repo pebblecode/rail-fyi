@@ -13,7 +13,7 @@ import { join } from 'path';
 
 let compile = (watch) => {
 
-  let entryFile = join(__dirname, 'src', 'client', 'index.jsx');
+  let entryFile = join(__dirname, 'src', 'client', 'c2cfyi.jsx');
   var destFolder = join(__dirname, 'public', 'js');
 
   let bundler = watchify(

@@ -27,6 +27,7 @@
     "gulp-babel": "~6.0.0",
     "gulp-concat": "~2.6.0",
     "gulp-sourcemaps": "~1.6.0",
+    "hapi-react-views": "tanepiper/hapi-react-views",
     "nodemon": "^1.8.1",
     "vinyl-buffer": "~1.0.0",
     "vinyl-source-stream": "~1.1.0",

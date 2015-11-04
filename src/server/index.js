@@ -28,10 +28,8 @@ let plugins = {
   vision: {},
   visionary: {
     path: layoutPath,
-    layout: true,
-    layoutPath: join(layoutPath, 'layout'),
     engines: {
-      html: require('handlebars')
+      jsx: require('hapi-react-views')
     },
     isCached: process.env.NODE_ENV === 'production',
     helpersPath: join(layoutPath, 'helpers')

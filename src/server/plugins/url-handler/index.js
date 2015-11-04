@@ -43,7 +43,7 @@ var registerPlugin = (server, options, next) => {
     path: '/{shortCode}',
     handler: (req, reply) => {
       server.methods.parseUrl(req.params.shortCode)
-        .then(result => reply.view('reportpage', { result: result }), error => reply(error))
+        .then(result => reply.view('reportpage', result), error => reply(error))
     }
   });
 

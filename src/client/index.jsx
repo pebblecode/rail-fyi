@@ -66,7 +66,6 @@ let StationTab = React.createClass({
   }
 });
 
-
 let TrainTab = React.createClass({
   getInitialState: function () {
     return {

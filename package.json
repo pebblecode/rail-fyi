@@ -6,6 +6,8 @@
     "boom": "~3.0.0",
     "glue": "~2.4.0",
     "gulp": "~3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-sass": "^2.1.0",
     "handlebars": "~4.0.4",
     "hapi": "~11.0.5",
     "hapi-auth-cookie": "^3.1.0",

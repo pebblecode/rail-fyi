@@ -9,6 +9,7 @@ const Layout = React.createClass({
       <html>
         <head>
           <title>{this.props.title}</title>
+          <link rel="stylesheet" href="/css/styles.css"/>
         </head>
         <body>
           {this.props.children}

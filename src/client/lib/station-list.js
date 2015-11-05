@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = [
+export default [
   {
     "code": "BSO",
     "name": "Basildon"

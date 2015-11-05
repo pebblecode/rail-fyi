@@ -1,13 +1,13 @@
 'use strict';
 
-import Boom from 'boom';
-import stationList from './lib/stations';
+const Boom = require('boom');
+const stationList = require('./lib/stations');
 
 var registerPlugin = (server, options, next) => {
 
   server.method({
     name: 'parseUrl',
-    method: shortCode => {
+    method: (shortCode) => {
 
       return new Promise((resolve, reject) => {
 
@@ -20,6 +20,7 @@ var registerPlugin = (server, options, next) => {
         } else if (/^[A-Za-z]{3}$/i.test(shortCode)) {
 
           const station = stationList.filter(station => station.code.toLowerCase() === shortCode.toLowerCase())[0];
+
           if (!station) {
             return reject(Boom.notFound('Station not found'));
           }
@@ -43,7 +44,7 @@ var registerPlugin = (server, options, next) => {
     path: '/{shortCode}',
     handler: (req, reply) => {
       server.methods.parseUrl(req.params.shortCode)
-        .then(result => {
+        .then((result) => {
 
           server.render('reportpage', result, {runtimeOptions: { renderMethod: 'renderToString'}}, (error, output) => {
             if (error) {
@@ -62,9 +63,7 @@ var registerPlugin = (server, options, next) => {
             })
 
           });
-
-          //reply.view('reportpage', result);
-        }, error => reply(error))
+        }, (error) => reply(error))
     }
   });
 
@@ -86,4 +85,4 @@ registerPlugin.attributes = {
   dependencies: []
 };
 
-export { registerPlugin as register };
+module.exports = registerPlugin;

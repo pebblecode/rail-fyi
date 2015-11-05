@@ -1,8 +1,6 @@
 'use strict';
 
-import {get as doGet} from 'http';
-
-var registerPlugin = (server, options, next) => {
+const registerPlugin = (server, options, next) => {
 
   server.method({
     name: 'reportPage',
@@ -29,7 +27,7 @@ var registerPlugin = (server, options, next) => {
     config: {
       auth: 'session'
     },
-    handler: function (req, reply) {
+    handler: (req, reply) => {
       server.methods.reportPage(req).then((details) => {
         reply.view('reportpage', details, { layout: 'c2c' });
       });
@@ -45,4 +43,4 @@ registerPlugin.attributes = {
   dependencies: []
 };
 
-export { registerPlugin as register };
+module.exports = registerPlugin;

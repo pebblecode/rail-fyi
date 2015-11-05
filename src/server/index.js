@@ -1,9 +1,9 @@
 'use strict';
 
-import { compose } from 'glue';
-import { join } from 'path';
+const compose = require('glue').compose;
+const join = require('path').join;
 
-let server = {
+const server = {
   debug: {
     log: ['error', 'debug'],
     request: ['error']
@@ -13,7 +13,7 @@ let server = {
   }
 };
 
-let connections = [{
+const connections = [{
   port: process.env.PORT || 9000,
   labels: ['web'],
   router: {
@@ -22,8 +22,8 @@ let connections = [{
 }];
 
 
-let layoutPath = join(__dirname, '..', '..', 'views');
-let plugins = {
+const layoutPath = join(__dirname, '..', '..', 'views');
+const plugins = {
   inert: {},
   vision: {},
   visionary: {
@@ -54,7 +54,7 @@ let plugins = {
 };
 
 
-let createServer = () => {
+const createServer = () => {
   compose({
     server: server,
     connections: connections,
@@ -87,5 +87,5 @@ if (!module.parent) {
   createServer();
 }
 
-export default createServer
+module.exports = createServer;
 

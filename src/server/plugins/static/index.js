@@ -7,7 +7,7 @@
  * @param next
  * @returns {*}
  */
-let registerPlugin = (server, options, next) => {
+const registerPlugin = (server, options, next) => {
 
   server.route({
     method: 'GET',
@@ -31,4 +31,4 @@ registerPlugin.attributes = {
   dependencies: []
 };
 
-export { registerPlugin as register };
+module.exports = registerPlugin;

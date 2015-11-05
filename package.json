@@ -40,7 +40,7 @@
   "scripts": {
     "start": "node lib/server",
     "compile": "babel --source-maps --out-dir lib src/",
-    "babel-node": "babel-node src/server",
+    "babel-node": "node src/server",
     "dev": "nodemon --exec npm run babel-node"
   }
 }

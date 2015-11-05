@@ -14,40 +14,6 @@ import autoprefixer from 'gulp-autoprefixer';
 
 import { join } from 'path';
 
-let compile = (watch) => {
-
-  let entryFile = join(__dirname, 'src', 'client', 'index.jsx');
-  var destFolder = join(__dirname, 'public', 'js');
-
-  let bundler = watchify(
-    browserify(entryFile, Object.apply({}, { debug: true }, watchify.args))
-  );
-
-  let rebundle = () => {
-    bundler
-      .transform(babelify)
-      .bundle()
-    .on('error', function (error) {
-      console.error(error);
-      this.emit('end');
-    })
-    .pipe(source('build.js'))
-    .pipe(buffer())
-    .pipe(sourceMaps.init())
-    .pipe(sourceMaps.write('.'))
-    .pipe(gulp.dest(destFolder))
-  };
-
-  if (watch) {
-    bundler.on('update', () => {
-      console.log('update');
-      rebundle();
-    });
-  }
-
-  rebundle();
-};
-
 gulp.task('sass', () => {
   let entryFile = join(__dirname, 'src', 'sass', 'main.scss');
   var destFolder = join(__dirname, 'public', 'css');
@@ -61,7 +27,12 @@ gulp.task('sass', () => {
     .pipe(gulp.dest(destFolder));
 });
 
-gulp.task('build', () => { return compile(false); });
-gulp.task('watch', () => { return compile(true); });
+gulp.task('build', require('./gulp-tasks/compile-frontend')(gulp, __dirname));
 
-gulp.task('default', ['build', 'sass']);
+gulp.task('watch', ['build'], function () {
+  gulp.watch('*.jsx', ['build']);
+});
+
+gulp.task('docs:server', require('./gulp-tasks/docs')(gulp));
+
+gulp.task('default', ['watch']);

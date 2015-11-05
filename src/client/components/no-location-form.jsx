@@ -21,15 +21,18 @@ const NoLocationForm = React.createClass({
 
     let userDisplay;
     if (this.props.user.id === 'unknown') {
-      userDisplay = <p>Hi there!</p>
+      userDisplay = <div>
+        <p>Hi there!</p>
+        <p><a href="/login">Login with Twitter</a></p>
+      </div>
+
     } else {
-      userDisplay = <p>Hi <strong>{this.props.user.username}</strong></p>
+      userDisplay = <p>Hi <strong>{this.props.user.username}</strong></p>;
     }
 
     return (
       <div>
         {userDisplay}
-
         <form>
           <div>
             <label htmlFor="location-id">

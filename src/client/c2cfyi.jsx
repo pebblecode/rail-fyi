@@ -3,9 +3,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ReportPage from './../../views/reportpage.jsx';
+import C2CApp from './../../views/c2c-app.jsx';
 
-const App = React.createFactory(ReportPage);
+const App = React.createFactory(C2CApp);
 const mountNode = document.getElementById('app-mount');
 const serverState = window.C2CFYI;
 

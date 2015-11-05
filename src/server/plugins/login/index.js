@@ -34,13 +34,15 @@ const registerPlugin = (server, options, next) => {
           return reply('Authentication failed due to: ' + request.auth.error.message);
         }
 
-        request.auth.session.set(request.auth.credentials.profile);
+        reply.state('user-cookie', request.auth.credentials.profile);
+
+        //request.auth.session.set(request.auth.credentials.profile);
 
         // Perform any account lookup or registration, setup local session,
         // and redirect to the application. The third-party credentials are
         // stored in request.auth.credentials. Any query parameters from
         // the initial request are passed back via request.auth.credentials.query.
-        return reply.redirect('/report');
+        return reply.redirect('/');
       }
     });
 

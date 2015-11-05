@@ -1,5 +1,9 @@
 'use strict';
 
+require('babel-core/register')({
+  presets: ['react', 'es2015']
+});
+
 const compose = require('glue').compose;
 const join = require('path').join;
 
@@ -34,6 +38,7 @@ const plugins = {
     isCached: process.env.NODE_ENV === 'production',
     helpersPath: join(layoutPath, 'helpers')
   },
+  './common': {},
   './login': [{
     options: {
       twitter: {
@@ -45,7 +50,7 @@ const plugins = {
     }
   }],
   './homepage': {},
-  './url-handler': {},
+  //'./url-handler': {},
   './static': [{
     options: {
       staticDir: join(__dirname, '..', '..', 'public')
@@ -77,6 +82,15 @@ const createServer = () => {
           console.error(event);
         }
       });
+
+      const cookieOptions = {
+        encoding: 'iron',
+        path: '/',
+        password: 'c2cfyi',
+        isSecure: false
+      };
+
+      server.state('user-cookie', cookieOptions);
 
       server.log(['debug'], `Server started on 9000`);
     });

@@ -2,34 +2,44 @@
 
 const registerPlugin = (server, options, next) => {
 
-  server.method({
-    name: 'reportPage',
-    method: (req) => {
-      return new Promise((resolve, reject) => {
-        resolve({
-          profile: req.auth.credentials
-        });
-      });
-    }
-  });
-
   server.route({
     method: 'GET',
     path: '/',
     handler: (req, reply) => {
-      reply.view('homepage', {}, { layout: 'c2c' });
-    }
-  });
 
-  server.route({
-    method: 'GET',
-    path: '/report',
-    config: {
-      auth: 'session'
-    },
-    handler: (req, reply) => {
-      server.methods.reportPage(req).then((details) => {
-        reply.view('reportpage', details, { layout: 'c2c' });
+      // With no code, we have no location details
+      const locationDetails = {};
+
+      console.log(locationDetails);
+
+      server.methods.getUserState(req).then((user) => {
+
+        console.log(user);
+
+        const pageState = Object.assign({}, {locationDetails: locationDetails}, {user: user});
+
+        server.render('c2c-app', pageState, {
+          runtimeOptions: {
+            renderMethod: 'renderToString'
+          }
+        }, (error, output) => {
+          if (error) {
+            return reply(error);
+          }
+
+          const htmlContext = {
+            remount: output,
+            state: `window.C2CFYI=${JSON.stringify(pageState)};`
+          };
+
+          server.render('layout/layout', htmlContext, (error, html) => {
+            if (error) {
+              return reply(error);
+            }
+            reply(html);
+          })
+
+        });
       });
     }
   });

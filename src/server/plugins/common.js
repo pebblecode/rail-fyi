@@ -1,7 +1,7 @@
 'use strict';
 
 const Boom = require('boom');
-const stationList = require('./url-handler/lib/stations');
+const stationList = require('./lib/stations');
 
 const registerPlugin = (server, options, next) => {
 

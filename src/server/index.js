@@ -26,7 +26,7 @@ const connections = [{
 }];
 
 
-const layoutPath = join(__dirname, '..', '..', 'views');
+const layoutPath = join(__dirname, '..', 'client');
 const plugins = {
   inert: {},
   vision: {},
@@ -35,8 +35,7 @@ const plugins = {
     engines: {
       jsx: require('hapi-react-views')
     },
-    isCached: process.env.NODE_ENV === 'production',
-    helpersPath: join(layoutPath, 'helpers')
+    isCached: process.env.NODE_ENV === 'production'
   },
   './common': {},
   './login': [{

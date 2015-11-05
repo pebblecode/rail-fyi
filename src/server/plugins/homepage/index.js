@@ -35,8 +35,8 @@ const registerPlugin = (server, options, next) => {
             })
 
           });
-        });
-      });
+        }, (error) => reply(error));
+      }, (error) => reply(error));
     }
   });
 

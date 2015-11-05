@@ -4,41 +4,37 @@ const registerPlugin = (server, options, next) => {
 
   server.route({
     method: 'GET',
-    path: '/',
+    path: '/{shortCode?}',
     handler: (req, reply) => {
 
-      // With no code, we have no location details
-      const locationDetails = {};
+      server.methods.getShortcodeDetails(req.params.shortCode).then((location) => {
 
-      console.log(locationDetails);
+        server.methods.getUserState(req).then((user) => {
 
-      server.methods.getUserState(req).then((user) => {
+          const pageState = Object.assign({}, { location: location }, { user: user });
 
-        console.log(user);
-
-        const pageState = Object.assign({}, {locationDetails: locationDetails}, {user: user});
-
-        server.render('c2c-app', pageState, {
-          runtimeOptions: {
-            renderMethod: 'renderToString'
-          }
-        }, (error, output) => {
-          if (error) {
-            return reply(error);
-          }
-
-          const htmlContext = {
-            remount: output,
-            state: `window.C2CFYI=${JSON.stringify(pageState)};`
-          };
-
-          server.render('layout/layout', htmlContext, (error, html) => {
+          server.render('c2c-app', pageState, {
+            runtimeOptions: {
+              renderMethod: 'renderToString'
+            }
+          }, (error, output) => {
             if (error) {
               return reply(error);
             }
-            reply(html);
-          })
 
+            const htmlContext = {
+              remount: output,
+              state: `window.C2CFYI=${JSON.stringify(pageState)};`
+            };
+
+            server.render('layout/layout', htmlContext, (error, html) => {
+              if (error) {
+                return reply(error);
+              }
+              reply(html);
+            })
+
+          });
         });
       });
     }

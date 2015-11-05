@@ -14,14 +14,12 @@ const C2CApp = React.createClass({
 
   render() {
 
-    console.log(this.state);
-
     let initialForm;
 
-    if(this.state.locationDetails.type === 'station') {
-      initialForm = <StationForm location={this.state.locationDetails} user={this.state.user} />
-    } else if (this.state.locationDetails === 'train') {
-      initialForm = <TrainForm location={this.state.locationDetails} user={this.state.user} />
+    if(this.state.location.type === 'station') {
+      initialForm = <StationForm location={this.state.location} user={this.state.user} />
+    } else if (this.state.location.type === 'train') {
+      initialForm = <TrainForm location={this.state.location} user={this.state.user} />
     } else {
       initialForm = <NoLocationForm user={this.state.user}/>
     }

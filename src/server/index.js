@@ -50,7 +50,6 @@ const plugins = {
     }
   }],
   './homepage': {},
-  //'./url-handler': {},
   './static': [{
     options: {
       staticDir: join(__dirname, '..', '..', 'public')

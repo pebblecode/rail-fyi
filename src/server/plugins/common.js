@@ -1,5 +1,8 @@
 'use strict';
 
+const Boom = require('boom');
+const stationList = require('./url-handler/lib/stations');
+
 const registerPlugin = (server, options, next) => {
 
   server.method({
@@ -16,9 +19,44 @@ const registerPlugin = (server, options, next) => {
             username: 'Unknown User'
           };
         }
-
-        console.log(user);
         return resolve(user);
+      });
+    }
+  });
+
+  server.method({
+    name: 'getShortcodeDetails',
+    method: (shortCode) => {
+
+      return new Promise((resolve, reject) => {
+
+        if (!shortCode) {
+          return resolve({});
+        }
+
+        let result = {};
+
+        if ( !isNaN(parseInt(shortCode)) && shortCode.length === 5) {
+          result.type = 'train';
+          result.code = shortCode;
+          result.name = `C2C Train - Carriage ${shortCode}`;
+        } else if (/^[A-Za-z]{3}$/i.test(shortCode)) {
+
+          const station = stationList.filter(station => station.code.toLowerCase() === shortCode.toLowerCase())[0];
+
+          if (!station) {
+            return reject(Boom.notFound('Station not found'));
+          }
+
+          result.type = 'station';
+          result.code = shortCode;
+          result.name = station.name;
+
+        } else {
+          return reject(Boom.badData('Unknown Code'));
+        }
+
+        return resolve(result);
       });
     }
   });

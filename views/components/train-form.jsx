@@ -1,17 +1,51 @@
 'use strict';
 
-import React from 'react';
+const React = require('react');
+
+const TrainStaffForm = require('./train-staff-form.jsx');
+const LocationDetails = require('./location-details.jsx');
 
 const TrainForm = React.createClass({
 
+  getInitialState () {
+    return Object.assign({}, this.props, { currentForm: 'staff' });
+  },
+
+  showFacilityForm (event) {
+    this.setState({ currentForm: 'facility' });
+  },
+
+  showStaffForm (event) {
+    this.setState({ currentForm: 'staff' });
+  },
+
   render () {
+
+    let showForm;
+    if (this.state.currentForm === 'staff') {
+      showForm = <TrainStaffForm />
+    } else {
+      showForm =
+        <div className="facility-form">
+          <ul>
+            <li>List Item</li>
+            <li>List Item</li>
+            <li>List Item</li>
+          </ul>
+        </div>
+    }
+
     return (
       <div className="train-form">
-        <button type="submit">Report Staff</button>
-        <button type="submit">Report Facilities</button>
+
+        <LocationDetails location={this.state.location} />
+
+        <button type="submit" onClick={this.showStaffForm}>Report Staff</button>
+        <button type="submit" onClick={this.showFacilityForm}>Report Facilities</button>
+        {showForm}
       </div>
     );
   }
 });
 
-export default TrainForm;
+module.exports = TrainForm;

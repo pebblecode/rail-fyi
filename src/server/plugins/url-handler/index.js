@@ -46,24 +46,28 @@ var registerPlugin = (server, options, next) => {
       server.methods.parseUrl(req.params.shortCode)
         .then((result) => {
 
-          server.render('reportpage', result, {runtimeOptions: { renderMethod: 'renderToString'}}, (error, output) => {
-            if (error) {
-              return reply(error);
-            }
-            const htmlContext = {
-              remount: output,
-              state: `window.C2CFYI=${JSON.stringify(result)};`
-            };
+          reply.redirect('/?')
 
-            server.render('layout/layout', htmlContext, (error, html) => {
-              if (error) {
-                return reply(error);
-              }
-              reply(html);
-            })
+        });
 
-          });
-        }, (error) => reply(error))
+        //  server.render('reportpage', result, {runtimeOptions: { renderMethod: 'renderToString'}}, (error, output) => {
+        //    if (error) {
+        //      return reply(error);
+        //    }
+        //    const htmlContext = {
+        //      remount: output,
+        //      state: `window.C2CFYI=${JSON.stringify(result)};`
+        //    };
+        //
+        //    server.render('layout/layout', htmlContext, (error, html) => {
+        //      if (error) {
+        //        return reply(error);
+        //      }
+        //      reply(html);
+        //    })
+        //
+        //  });
+        //}, (error) => reply(error))
     }
   });
 

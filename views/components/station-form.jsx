@@ -1,12 +1,13 @@
 'use strict';
 
-import React from 'react';
+const React = require('react');
 
-import StationStaffForm from './station-staff-form.jsx';
+const StationStaffForm = require('./station-staff-form.jsx');
+const LocationDetails = require('./location-details.jsx');
 
 const StationForm = React.createClass({
   getInitialState () {
-    return { currentForm: 'staff' };
+    return Object.assign({}, this.props, { currentForm: 'staff' });
   },
 
   showFacilityForm (event) {
@@ -35,6 +36,9 @@ const StationForm = React.createClass({
 
     return (
       <div className="station-form">
+
+        <LocationDetails location={this.state.location} />
+
         <button type="submit" onClick={this.showStaffForm}>Report Staff</button>
         <button type="submit" onClick={this.showFacilityForm}>Report Facilities</button>
         {showForm}
@@ -43,4 +47,4 @@ const StationForm = React.createClass({
   }
 });
 
-export default StationForm;
+module.exports = StationForm;

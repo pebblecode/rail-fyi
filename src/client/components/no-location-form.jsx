@@ -3,6 +3,19 @@
 const React = require('react');
 
 const NoLocationForm = React.createClass({
+  getInitialState() {
+    return { locationId: null };
+  },
+
+  locationIdChange (event) {
+    this.setState({ locationId: event.target.value });
+  },
+
+  gotoLocationId (event) {
+    event.preventDefault();
+    console.log('called');
+    window.location.href = `/${this.state.locationId}`;
+  },
 
   render() {
 
@@ -20,11 +33,11 @@ const NoLocationForm = React.createClass({
         <form>
           <div>
             <label htmlFor="location-id">
-              <input type="text" id="location-id" placeholder="Please enter Station or Train Carrage ID"/>
+              <input type="text" id="location-id" placeholder="Please enter Station or Train Carrage ID" value={this.state.locationId} onChange={this.locationIdChange}/>
             </label>
           </div>
           <div>
-            <input type="submit" value="Report to C2C" />
+            <input type="submit" value="Report to C2C" onClick={this.gotoLocationId} />
           </div>
         </form>
       </div>

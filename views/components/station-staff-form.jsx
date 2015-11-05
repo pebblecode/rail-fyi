@@ -6,27 +6,12 @@ const StationStaffForm = React.createClass({
   getInitialState() {
     return { selectedType: 'knowledge', sentiment: 'positive', staffId: null};
   },
-
-  selectedKnowledge () {
-    this.setState({ selectedType: 'knowledge'});
+  selectedType (t) {
+    this.setState({ selectedType: t});
   },
-
-  selectedBehaviour () {
-    this.setState({ selectedType: 'behaviour'});
+  selectedSentiment (s) {
+    this.setState({ sentiment: s });
   },
-
-  selectedAvailability () {
-    this.setState({ selectedType: 'availability'});
-  },
-
-  selectedPositive () {
-    this.setState({ sentiment: 'positive' });
-  },
-
-  selectedNegative () {
-    this.setState({ sentiment: 'negative' });
-  },
-
   staffIdChange(event) {
     this.setState({ staffId: event.target.value });
   },
@@ -54,22 +39,22 @@ const StationStaffForm = React.createClass({
         <div className="type-buttons">
           <button type="submit"
                   className={this.state.selectedType === 'knowledge' ? 'active' : ''}
-                  onClick={this.selectedKnowledge}>Knowledge</button>
+                  onClick={this.selectedType.bind(this, 'knowledge')}>Knowledge</button>
           <button type="submit"
                   className={this.state.selectedType === 'behaviour' ? 'active' : ''}
-                  onClick={this.selectedBehaviour}>Behaviour</button>
+                  onClick={this.selectedType.bind(this, 'behaviour')}>Behaviour</button>
           <button type="submit"
                   className={this.state.selectedType === 'availability' ? 'active' : ''}
-                  onClick={this.selectedAvailability}>Availability</button>
+                  onClick={this.selectedType.bind(this, 'availability')}>Availability</button>
         </div>
 
         <div className="sentiment-buttons">
           <button type="submit"
                   className={this.state.sentiment === 'positive' ? 'active': ''}
-                  onClick={this.selectedPositive}>Positive</button>
+                  onClick={this.selectedSentiment.bind(this, 'positive')}>Positive</button>
           <button type="submit"
                   className={this.state.sentiment === 'negative' ? 'active': ''}
-                  onClick={this.selectedNegative}>Negative</button>
+                  onClick={this.selectedSentiment.bind(this, 'negative')}>Negative</button>
         </div>
 
         <button type="submit" onClick={this.doStateSubmit}>Submit</button>

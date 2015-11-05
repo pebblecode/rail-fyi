@@ -3,6 +3,7 @@
 const React = require('react');
 
 const StationStaffForm = require('./station-staff-form.jsx');
+const StationFacilityForm = require('./station-facilities-form.jsx');
 const LocationDetails = require('./location-details.jsx');
 
 const StationForm = React.createClass({
@@ -24,14 +25,7 @@ const StationForm = React.createClass({
     if (this.state.currentForm === 'staff') {
       showForm = <StationStaffForm />
     } else {
-      showForm =
-        <div className="facility-form">
-          <ul>
-            <li>List Item</li>
-            <li>List Item</li>
-            <li>List Item</li>
-          </ul>
-        </div>
+      showForm = <StationFacilityForm />
     }
 
     return (

@@ -5,6 +5,7 @@ const React = require('react');
 const StaffForm = require('./staff-form.jsx');
 const StationFacilityForm = require('./station-facilities-form.jsx');
 const LocationDetails = require('./location-details.jsx');
+const TrainStationSelect = require('./train-station-select.jsx');
 
 const StationForm = React.createClass({
   getInitialState () {
@@ -30,6 +31,8 @@ const StationForm = React.createClass({
 
     return (
       <div className="station-form">
+
+        <TrainStationSelect/>
 
         <LocationDetails location={this.state.location} />
 

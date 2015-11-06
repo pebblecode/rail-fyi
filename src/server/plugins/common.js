@@ -1,9 +1,11 @@
 'use strict';
 
 const Boom = require('boom');
-const stationList = require('./lib/stations');
+const join = require('path').join;
 
 const registerPlugin = (server, options, next) => {
+
+  const stationList = require(join(server.settings.app.sharedDir, 'stations.js'));
 
   server.method({
     name: 'getUserState',

@@ -4,13 +4,8 @@
   "dependencies": {
     "bell": "^6.0.0",
     "boom": "~3.0.0",
+    "decision-tree": "~0.3.0",
     "glue": "~2.4.0",
-    "gulp": "~3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-jsdoc": "^0.1.5",
-    "node-sass": "3.3.3",
-    "gulp-sass": "2.0.3",
-    "handlebars": "~4.0.4",
     "hapi": "~11.1.0",
     "hapi-auth-cookie": "^3.1.0",
     "inert": "~3.2.0",
@@ -29,21 +24,27 @@
     "babel-preset-react": "~6.1.2",
     "babelify": "~7.2.0",
     "browserify": "~12.0.1",
+    "code": "~2.0.1",
+    "gulp": "~3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
     "gulp-babel": "^6.1.0",
     "gulp-concat": "^2.6.0",
-    "gulp-jsdoc": "^0.1.5",
+    "gulp-sass": "2.0.3",
     "gulp-sourcemaps": "^1.6.0",
     "hapi-react-views": "tanepiper/hapi-react-views",
+    "lab": "~7.2.0",
+    "node-sass": "3.3.3",
     "nodemon": "^1.8.1",
     "vinyl-buffer": "~1.0.0",
     "vinyl-source-stream": "~1.1.0",
     "watchify": "~3.6.0",
-    "webpack":   "~1.12.2"
+    "webpack": "~1.12.2"
   },
   "scripts": {
     "start": "node lib/server",
     "compile": "babel --source-maps --out-dir lib src/",
     "babel-node": "node src/server",
-    "dev": "nodemon --exec npm run babel-node"
+    "dev": "nodemon --exec npm run babel-node",
+    "test": "lab -t 100"
   }
 }

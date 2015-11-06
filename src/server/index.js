@@ -13,7 +13,7 @@ const server = {
     request: ['error']
   },
   app: {
-
+    sharedDir: join(__dirname, '..', 'shared')
   }
 };
 
@@ -37,7 +37,6 @@ const plugins = {
     },
     isCached: process.env.NODE_ENV === 'production'
   },
-  './common': {},
   './login': [{
     options: {
       twitter: {

@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const StationStaffForm = React.createClass({
+const StaffForm = React.createClass({
   getInitialState() {
     return { selectedType: 'knowledge', sentiment: 'positive', staffId: null};
   },
@@ -63,4 +63,4 @@ const StationStaffForm = React.createClass({
   }
 });
 
-module.exports = StationStaffForm;
+module.exports = StaffForm;

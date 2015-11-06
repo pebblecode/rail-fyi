@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const StationStaffForm = require('./station-staff-form.jsx');
+const StaffForm = require('./staff-form.jsx');
 const StationFacilityForm = require('./station-facilities-form.jsx');
 const LocationDetails = require('./location-details.jsx');
 
@@ -23,7 +23,7 @@ const StationForm = React.createClass({
 
     let showForm;
     if (this.state.currentForm === 'staff') {
-      showForm = <StationStaffForm />
+      showForm = <StaffForm />
     } else {
       showForm = <StationFacilityForm />
     }

@@ -2,7 +2,11 @@
 
 const React = require('react');
 
+const NearestStation = require('./nearest-station.jsx');
+
+
 const NoLocationForm = React.createClass({
+
   getInitialState() {
     return { locationId: null };
   },
@@ -35,6 +39,7 @@ const NoLocationForm = React.createClass({
         {userDisplay}
         <form>
           <div>
+            <NearestStation></NearestStation>
             <label htmlFor="location-id">
               <input type="text" id="location-id" placeholder="Please enter Station or Train Carrage ID" value={this.state.locationId} onChange={this.locationIdChange}/>
             </label>

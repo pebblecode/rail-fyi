@@ -38,13 +38,14 @@ const registerPlugin = (server, options, next) => {
 
         let result = {};
 
-        if ( !isNaN(parseInt(shortCode)) && shortCode.length === 5) {
+        if (!isNaN(parseInt(shortCode)) && shortCode.length === 5) {
           result.type = 'train';
           result.code = shortCode;
           result.name = `C2C Train - Carriage ${shortCode}`;
         } else if (/^[A-Za-z]{3}$/i.test(shortCode)) {
 
-          const station = stationList.filter(station => station.code.toLowerCase() === shortCode.toLowerCase())[0];
+          const station = stationList
+            .filter(station => station.crsCode && (station.crsCode.toLowerCase() === shortCode.toLowerCase()))[0];
 
           if (!station) {
             return reject(Boom.notFound('Station not found'));

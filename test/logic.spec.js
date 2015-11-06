@@ -33,7 +33,7 @@ lab.experiment('Logic tree', () => {
     done();
   });
 
-  lab.test('returns expected tweet for logic', (done) => {
+  lab.test('returns expected tweet for logic for train', (done) => {
 
     const logicPath = {
       location: 'train',
@@ -44,6 +44,22 @@ lab.experiment('Logic tree', () => {
 
     server.methods.decideTweet(logicPath).then((result) => {
       Code.expect(result).to.equal('I\'ve had a great experience with a staff member on your train today');
+      done();
+    }, done)
+
+  });
+
+  lab.test('returns expected tweet for logic for station', (done) => {
+
+    const logicPath = {
+      location: 'station',
+      interaction: 'staff',
+      type: 'behaviour',
+      sentiment: 'positive'
+    };
+
+    server.methods.decideTweet(logicPath).then((result) => {
+      Code.expect(result).to.equal('I\'ve had a great experience with a staff member at your station today');
       done();
     }, done)
 

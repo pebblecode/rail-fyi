@@ -77,13 +77,13 @@ var registerPlugin = (server, options, next) => {
     sentiment: 'negative',
     tweet: 'The facilities on your trains are broken'
   }, {
-    location: 'train',
+    location: 'station',
     interaction: 'staff',
     type: 'behaviour',
     sentiment: 'positive',
     tweet: 'I\'ve had a great experience with a staff member at your station today'
   }, {
-    location: 'train',
+    location: 'station',
     interaction: 'staff',
     type: 'behaviour',
     sentiment: 'negative',
@@ -119,7 +119,7 @@ var registerPlugin = (server, options, next) => {
     sentiment: 'positive',
     tweet: 'The facilities in the station are very clean'
   }, {
-    location: 'train',
+    location: 'station',
     interaction: 'facilities',
     type: 'cleanliness',
     sentiment: 'negative',

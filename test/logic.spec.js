@@ -43,7 +43,7 @@ lab.experiment('Logic tree', () => {
     };
 
     server.methods.decideTweet(logicPath).then((result) => {
-      Code.expect(result).to.equal('I\'ve had a great experience with a staff member on your train today #c2cfyi');
+      Code.expect(result).to.equal('I\'ve had a great experience with a staff member on your train today');
       done();
     }, done)
 

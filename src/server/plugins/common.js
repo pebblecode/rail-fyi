@@ -36,7 +36,7 @@ const registerPlugin = (server, options, next) => {
 
         let result = {};
 
-        if ( !isNaN(parseInt(shortCode)) && shortCode.length === 5) {
+        if (!isNaN(parseInt(shortCode)) && shortCode.length === 5) {
           result.type = 'train';
           result.code = shortCode;
           result.name = `C2C Train - Carriage ${shortCode}`;

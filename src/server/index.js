@@ -47,6 +47,7 @@ const plugins = {
       }
     }
   }],
+  './common': {},
   './homepage': {},
   './static': [{
     options: {

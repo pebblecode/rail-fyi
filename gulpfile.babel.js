@@ -33,6 +33,5 @@ gulp.task('watch', ['build'], function () {
   gulp.watch('*.jsx', ['build']);
 });
 
-gulp.task('docs:server', require('./gulp-tasks/docs')(gulp));
 
 gulp.task('default', ['build', 'sass']);

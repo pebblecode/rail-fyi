@@ -18,7 +18,7 @@ const FacilitiesForm = React.createClass({
 
   doStateSubmit() {
 
-    let queryParams = this.state;
+    let queryParams = Object.assign({}, this.state);
     queryParams.location = queryParams.location.type;
 
     fetch('/get-tweet', {

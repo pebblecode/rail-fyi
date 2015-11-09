@@ -1,9 +1,9 @@
 'use strict';
 
-import React from 'react';
-import ReactDOM from 'react-dom';
+const React = require('react');
+const ReactDOM  = require('react-dom');
 
-import C2CApp from './c2c-app.jsx';
+const C2CApp = require('./c2c-app.jsx');
 
 const App = React.createFactory(C2CApp);
 const mountNode = document.getElementById('app-mount');

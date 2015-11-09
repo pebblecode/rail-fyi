@@ -6,17 +6,17 @@ const StationFacilitiesForm = React.createClass({
   displayName: 'StationFacilities',
 
   getInitialState() {
-    return { selectedType: 'cleanliness', sentiment: 'positive'};
+    return { location: 'station', interaction: 'facilities', type: 'cleanliness', sentiment: 'positive'};
   },
   selectedType (t) {
-    this.setState({ selectedType: t});
+    this.setState({ type: t});
   },
   selectedSentiment (s) {
-    this.setState({ sentiment: s });
+    this.setState({ type: s });
   },
 
   doStateSubmit() {
-    fetch('/submit-post', {method: 'post', body: JSON.stringify(this.state)})
+    fetch('/get-tweet', {method: 'post', body: JSON.stringify(this.state)})
     .then(response => {
       return response.json();
     }).then(body => {
@@ -31,14 +31,14 @@ const StationFacilitiesForm = React.createClass({
       <div>
         <div className="type-buttons">
           <button type="submit"
-                  className={this.state.selectedType === 'cleanliness' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'cleanliness')}>Cleanliness</button>
+                  className={this.state.type === 'cleanliness' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'cleanliness')}>Cleanliness</button>
           <button type="submit"
-                  className={this.state.selectedType === 'comfort' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'comfort')}>Comfort</button>
+                  className={this.state.type === 'comfort' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'comfort')}>Comfort</button>
           <button type="submit"
-                  className={this.state.selectedType === 'damage' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'damage')}>Damage</button>
+                  className={this.state.type === 'damage' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'damage')}>Damage</button>
         </div>
 
         <div className="sentiment-buttons">

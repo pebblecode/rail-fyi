@@ -4,7 +4,7 @@ const Hapi = require('hapi');
 const Code = require('code');
 const Lab = require('lab');
 
-const logic = require('./../src/server/plugins/logic');
+const logic = require('./../');
 
 const lab = exports.lab = Lab.script();
 

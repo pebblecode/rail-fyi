@@ -45,6 +45,6 @@
     "compile": "babel --source-maps --out-dir lib src/",
     "babel-node": "node src/server",
     "dev": "nodemon --exec npm run babel-node",
-    "test": "lab -t 100"
+    "test": "lab src/server/plugins/ -t 100 -P '.spec'"
   }
 }

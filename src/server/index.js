@@ -48,6 +48,7 @@ const plugins = {
     }
   }],
   './common': {},
+  './logic': {},
   './homepage': {},
   './static': [{
     options: {

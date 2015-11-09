@@ -167,6 +167,17 @@ var registerPlugin = (server, options, next) => {
     }
   });
 
+  server.route({
+    method: 'GET',
+    path: '/get-tweet',
+    handler: (req, reply) => {
+      console.log(req.query);
+      server.methods.decideTweet(req.query).then((tweet) => {
+        reply({ tweet: tweet});
+      }, reply);
+    }
+  });
+
   return next();
 };
 

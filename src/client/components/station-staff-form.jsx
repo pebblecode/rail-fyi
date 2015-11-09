@@ -19,7 +19,7 @@ const StaffForm = React.createClass({
   },
 
   doStateSubmit() {
-    fetch('/submit-post', {method: 'post', body: JSON.stringify(this.state)})
+    fetch('/get-tweet', {method: 'post', body: JSON.stringify(this.state)})
     .then(response => {
       return response.json();
     }).then(body => {
@@ -40,14 +40,14 @@ const StaffForm = React.createClass({
 
         <div className="type-buttons">
           <button type="submit"
-                  className={this.state.selectedType === 'knowledge' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'knowledge')}>Knowledge</button>
+                  className={this.state.type === 'knowledge' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'knowledge')}>Knowledge</button>
           <button type="submit"
-                  className={this.state.selectedType === 'behaviour' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'behaviour')}>Behaviour</button>
+                  className={this.state.type === 'behaviour' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'behaviour')}>Behaviour</button>
           <button type="submit"
-                  className={this.state.selectedType === 'availability' ? 'active' : ''}
-                  onClick={this.selectedType.bind(this, 'availability')}>Availability</button>
+                  className={this.state.type === 'availability' ? 'active' : ''}
+                  onClick={this.type.bind(this, 'availability')}>Availability</button>
         </div>
 
         <div className="sentiment-buttons">

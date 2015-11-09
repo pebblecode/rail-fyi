@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const StaffForm = require('./staff-form.jsx');
+const StaffForm = require('./station-staff-form.jsx');
 const StationFacilityForm = require('./station-facilities-form.jsx');
 const LocationDetails = require('./location-details.jsx');
 const TrainStationSelect = require('./train-station-select.jsx');

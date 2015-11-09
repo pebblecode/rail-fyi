@@ -3,6 +3,7 @@
 const React = require('react');
 
 const TrainStationSelect = React.createClass({
+  displayName: 'StationSelect',
 
   selectTrain() {
 

@@ -7,6 +7,7 @@ const StationForm = require('./components/station-form.jsx');
 const TrainForm = require('./components/train-form.jsx');
 
 const C2CApp = React.createClass({
+  displayName: 'C2CFYIApp',
 
   getInitialState() {
     return this.props;

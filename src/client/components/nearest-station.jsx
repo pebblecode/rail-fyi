@@ -14,6 +14,8 @@ function distance(lat1, lon1, lat2, lon2) { // See http://stackoverflow.com/a/21
 }
 
 const NearestStation = React.createClass({
+  displayName: 'NearestStation',
+
   getInitialState() {
     let navigator = global.navigator;
     if (navigator && navigator.geolocation) {

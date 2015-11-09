@@ -4,6 +4,8 @@ const React = require('react');
 const moment = require('moment');
 
 const LocationDetails = React.createClass({
+  displayName: 'LocationDetails',
+
   getInitialState () {
     return Object.assign({}, this.props, { dateTime: new Date () });
   },

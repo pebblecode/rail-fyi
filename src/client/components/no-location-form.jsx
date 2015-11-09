@@ -6,6 +6,7 @@ const NearestStation = require('./nearest-station.jsx');
 
 
 const NoLocationForm = React.createClass({
+  displayName: 'NoLocation',
 
   getInitialState() {
     return { locationId: null };

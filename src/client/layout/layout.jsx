@@ -3,6 +3,7 @@
 import React from 'react';
 
 const Layout = React.createClass({
+  displayName: 'Layout',
 
   render() {
     return (

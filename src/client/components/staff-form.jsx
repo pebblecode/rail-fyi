@@ -3,6 +3,8 @@
 const React = require('react');
 
 const StaffForm = React.createClass({
+  displayName: 'StaffForm',
+
   getInitialState() {
     return { selectedType: 'knowledge', sentiment: 'positive', staffId: null};
   },

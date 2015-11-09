@@ -8,6 +8,8 @@ const LocationDetails = require('./location-details.jsx');
 const TrainStationSelect = require('./train-station-select.jsx');
 
 const StationForm = React.createClass({
+  displayName: 'Station',
+
   getInitialState () {
     return Object.assign({}, this.props, { currentForm: 'staff' });
   },

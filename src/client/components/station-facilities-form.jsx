@@ -3,6 +3,8 @@
 const React = require('react');
 
 const StationFacilitiesForm = React.createClass({
+  displayName: 'StationFacilities',
+
   getInitialState() {
     return { selectedType: 'cleanliness', sentiment: 'positive'};
   },

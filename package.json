@@ -9,6 +9,7 @@
     "babel-preset-react": "~6.1.2",
     "bell": "^6.0.0",
     "boom": "~3.0.0",
+    "classnames": "~2.2.0",
     "decision-tree": "serendipious/nodejs-decision-tree-id3",
     "glue": "~2.4.0",
     "hapi": "~11.1.0",

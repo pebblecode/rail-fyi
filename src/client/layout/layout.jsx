@@ -13,7 +13,7 @@ const Layout = React.createClass({
           <link rel="stylesheet" href="/css/styles.css"/>
         </head>
         <body>
-          <div id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.remount }}></div>
+          <div className="container" id="app-mount" dangerouslySetInnerHTML={{ __html: this.props.remount }}></div>
           <script id="app-state" dangerouslySetInnerHTML={{ __html: this.props.state }}></script>
         </body>
 

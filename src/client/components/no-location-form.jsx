@@ -4,12 +4,11 @@ const React = require('react');
 
 const NearestStation = require('./nearest-station.jsx');
 
-
 const NoLocationForm = React.createClass({
   displayName: 'NoLocation',
 
   getInitialState() {
-    return { locationId: null };
+    return Object.assign({}, { locationId: null }, this.props);
   },
 
   locationIdChange (event) {
@@ -18,37 +17,25 @@ const NoLocationForm = React.createClass({
 
   gotoLocationId (event) {
     event.preventDefault();
-    console.log('called');
     window.location.href = `/${this.state.locationId}`;
   },
 
   render() {
-
-    let userDisplay;
-    if (this.props.user.id === 'unknown') {
-      userDisplay = <div>
-        <p>Hi there!</p>
-        <p><a href="/login">Login with Twitter</a></p>
-      </div>
-
-    } else {
-      userDisplay = <p>Hi <strong>{this.props.user.username}</strong></p>;
-    }
-
     return (
-      <div>
-        {userDisplay}
-        <form>
-          <div>
-            <NearestStation></NearestStation>
-            <label htmlFor="location-id">
-              <input type="text" id="location-id" placeholder="Please enter Station or Train Carrage ID" value={this.state.locationId} onChange={this.locationIdChange}/>
-            </label>
-          </div>
-          <div>
-            <input type="submit" value="Report to C2C" onClick={this.gotoLocationId} />
-          </div>
-        </form>
+      <div className="row">
+        <div className="one-half column">
+          <NearestStation />
+        </div>
+        <div className="one-half column">
+          <form>
+            <div className="row">
+              <label htmlFor="location-id">
+                <input className="u-full-width" type="text" id="location-id" placeholder="Please enter Station or Train Carrage ID" value={this.state.locationId} onChange={this.locationIdChange}/>
+              </label>
+            </div>
+            <input type="submit" value="Report to C2C" onClick={this.gotoLocationId} className="button-primary" />
+          </form>
+        </div>
       </div>
     )
   }

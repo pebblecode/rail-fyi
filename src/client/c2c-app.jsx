@@ -3,8 +3,8 @@
 const React = require('react');
 
 const NoLocationForm = require('./components/no-location-form.jsx');
-const StationForm = require('./components/station-form.jsx');
-const TrainForm = require('./components/train-form.jsx');
+const LocationForm = require('./components/location-form.jsx');
+const UserDetails = require('./components/user-details.jsx');
 
 const C2CApp = React.createClass({
   displayName: 'C2CFYIApp',
@@ -17,16 +17,16 @@ const C2CApp = React.createClass({
 
     let initialForm;
 
-    if(this.state.location.type === 'station') {
-      initialForm = <StationForm location={this.state.location} user={this.state.user} />
-    } else if (this.state.location.type === 'train') {
-      initialForm = <TrainForm location={this.state.location} user={this.state.user} />
+    if(this.state.location && this.state.location.type) {
+      initialForm = <LocationForm location={this.state.location} user={this.state.user} />
     } else {
       initialForm = <NoLocationForm user={this.state.user}/>
     }
 
     return (
       <div>
+        <UserDetails user={this.state.user} />
+
         {initialForm}
       </div>
     )

@@ -168,11 +168,10 @@ var registerPlugin = (server, options, next) => {
   });
 
   server.route({
-    method: 'GET',
+    method: 'POST',
     path: '/get-tweet',
     handler: (req, reply) => {
-      console.log(req.query);
-      server.methods.decideTweet(req.query).then((tweet) => {
+      server.methods.decideTweet(req.payload).then((tweet) => {
         reply({ tweet: tweet});
       }, reply);
     }

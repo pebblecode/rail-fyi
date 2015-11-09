@@ -44,10 +44,10 @@ const NearestStation = React.createClass({
   },
 
   render() {
-    let nearest = <p>Nearest station: <a href={this.state.nearestCode}>{this.state.nearestName}</a> {this.state.distance} km</p>
+    let nearest = <p>Nearest station: <a href={this.state.nearestCode}>{this.state.nearestName}</a> {this.state.distance} km</p>;
     return (
       <div>
-        {this.state.nearestCode && nearest}
+        {this.state.nearestCode ? nearest : 'Finding nearest station...'}
       </div>);
   }
 });

@@ -17,14 +17,14 @@ const LocationDetails = React.createClass({
     const id = `${this.state.location.type}-${this.state.location.code.toLowerCase()}`;
 
     return (
-      <div className="location-details" id={id}>
-        <div>
-          <h2>{this.state.location.name}</h2>
+      <div className="location-details row" id={id}>
+        <div className="one-half column">
+          <h4>{this.state.location.name}</h4>
+        </div>
+        <div className="one-half column">
           <h4>Date: {currentDate}</h4>
           <h4>Time: {currentTime}</h4>
         </div>
-
-        {this.props.children}
       </div>
     )
   }

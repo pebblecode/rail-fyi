@@ -31,6 +31,7 @@ gulp.task('build', require('./gulp-tasks/compile-frontend')(gulp, __dirname));
 
 gulp.task('watch', ['build'], function () {
   gulp.watch('*.jsx', ['build']);
+  gulp.watch('src/sass/**/*.scss', ['sass']);
 });
 
-gulp.task('default', ['build', 'sass']);
+gulp.task('default', ['watch']);

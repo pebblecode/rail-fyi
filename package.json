@@ -43,7 +43,7 @@
     "webpack": "~1.12.2"
   },
   "scripts": {
-    "start": "node lib/server",
+    "start": "node src/server",
     "compile": "babel --source-maps --out-dir lib src/",
     "babel-node": "node src/server",
     "dev": "nodemon --exec npm run babel-node",

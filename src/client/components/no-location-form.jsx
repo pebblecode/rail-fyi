@@ -2,7 +2,7 @@
 
 const React = require('react');
 
-const NearestStation = require('./nearest-station.jsx');
+const NearestStation = require('./nearest-station');
 
 const NoLocationForm = React.createClass({
   displayName: 'NoLocation',

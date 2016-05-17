@@ -3,7 +3,7 @@
 const React = require('react');
 const ReactDOM  = require('react-dom');
 
-const C2CApp = require('./c2c-app.jsx');
+const C2CApp = require('./c2c-app');
 
 const App = React.createFactory(C2CApp);
 const mountNode = document.getElementById('app-mount');

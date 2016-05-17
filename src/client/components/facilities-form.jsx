@@ -1,7 +1,7 @@
 'use strict';
 
 const React = require('react');
-const ShowTweet = require('./show-tweet.jsx');
+const ShowTweet = require('./show-tweet');
 
 const FacilitiesForm = React.createClass({
   displayName: 'FacilitiesForm',

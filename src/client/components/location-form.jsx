@@ -3,9 +3,9 @@
 const React = require('react');
 const classNames = require('classnames');
 
-const StaffForm = require('./staff-form.jsx');
-const FacilityForm = require('./facilities-form.jsx');
-const LocationDetails = require('./location-details.jsx');
+const StaffForm = require('./staff-form');
+const FacilityForm = require('./facilities-form');
+const LocationDetails = require('./location-details');
 
 const LocationForm = React.createClass({
   displayName: 'LocationForm',

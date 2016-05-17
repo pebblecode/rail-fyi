@@ -32,9 +32,10 @@ const NearestStation = React.createClass({
             minValue = distances[i];
           }
         }
+        var station = StationList[minIndex];
         self.setState({
-          nearestCode: StationList[minIndex].crsCode,
-          nearestName: StationList[minIndex].name,
+          nearestCode: station.crsCode,
+          nearestName: station.name,
           distance: Math.round(distances[minIndex]) });
       });
 
